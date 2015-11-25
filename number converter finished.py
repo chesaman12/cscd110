@@ -46,7 +46,7 @@ def is_binary(num):
             return False
         return binodec(num)
 
-
+#this is a comment
 def is_hex():
     ui = input("Enter a number in hex: ")
     for digit in ui:
