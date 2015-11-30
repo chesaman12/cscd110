@@ -55,12 +55,12 @@ def  userInput(prompt):
     return ui
 
 def is_anagram(str1, str2):
-    str1_list = list(str1)
-    str1_list.sort()
-    str2_list = list(str2)
-    str2_list.sort()
+    strList1 = list(str1)
+    strList1.sort()
+    strList2 = list(str2)
+    strList2.sort()
 
-    return str1_list == str2_list
+    return strList1 == strList2
 
 def is_palindrome(word,ui):
         if len(word) == ui and word == word[::-1]:
