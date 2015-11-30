@@ -8,6 +8,7 @@ def print_it():
     2. Crossword Solver
     3. Scrabble Finder
     4. Palindrome Finder
+
     0. Exit
      ''')
 
@@ -28,17 +29,29 @@ def looping():
         print_it()
         ui = userInput("What option would you like? ")
         if ui == 1:
-            userinput = input("Enter letters for anagram: ")
+            try:
+                userinput = input("Enter letters for anagram: ")
+            except:
+                print("Not valid")
+                return -1
             for word in dictionary:
                 if is_anagram(word,userinput):
                     print(word)
         elif ui == 2:
-            userinput = input("Enter letters for crossword, ? means space: ")
+            try:
+                userinput = input("Enter letters for crossword, ? means space: ")
+            except:
+                print("Not valid")
+                return -1
             for word in dictionary:
                 if is_crossword(word,userinput):
                     print(word)
         elif ui == 3:
-            userinput = input("Enter letters for scrabble: ")
+            try:
+                userinput = input("Enter letters for scrabble: ")
+            except:
+                print("Not valid")
+                return -1
             for word in dictionary:
                 if is_scrabble(word,userinput):
                     print(word, scrabblewordscore(word))
@@ -51,8 +64,12 @@ def looping():
             break
 
 def  userInput(prompt):
-    ui = int(input(prompt))
-    return ui
+    try:
+        ui = int(input(prompt))
+        return ui
+    except:
+            print("Not valid")
+            return -1
 
 def is_anagram(str1, str2):
     strList1 = list(str1)
@@ -77,10 +94,10 @@ def is_crossword(word, pattern):
         return True
 
 def is_scrabble(tiles,word):
-    for letter in tiles:
-        if letter == word:
+    for i,letter in enumerate(tiles):
+        if not letter == word[i]:
             return True
-        return False
+    return False
 
 
 def scrabblewordscore(word):
@@ -99,7 +116,7 @@ def scrabblewordscore(word):
         elif ch in "jx":
             val += 8
         elif ch in "qz":
-            val += "10"
+            val += 10
     return val
 
 
