@@ -77,7 +77,11 @@ def is_crossword(word, pattern):
         return True
 
 def is_scrabble(tiles,word):
-    return False
+    for letter in tiles:
+        if letter == word:
+            return True
+        return False
+
 
 def scrabblewordscore(word):
     val = 0
