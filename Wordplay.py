@@ -69,18 +69,14 @@ def is_palindrome(word,ui):
 
 def is_crossword(word, pattern):
     if len(word) == len(pattern):
-        pos = 0
-        x = 1
-        for letter in pattern:
+        for i,letter in enumerate(pattern):
             if not letter == "?":
-                if not letter == word[pos]:
-                    x = 0
-                pos += 1
-            if x == 1:
-               return True
+                if not letter == word[i]:
+                   return False
+        return True
 
 def is_scrabble(tiles,word):
-
+    return False
 
 def scrabblewordscore(word):
     val = 0
