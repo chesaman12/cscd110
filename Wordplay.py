@@ -67,7 +67,6 @@ def is_palindrome(word,ui):
         else:
             return False
 
-#new comment
 def is_crossword(word, pattern):
     if len(word) == len(pattern):
         pos = 0
