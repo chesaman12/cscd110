@@ -45,7 +45,7 @@ def looping():
                 return -1
             for word in dictionary:
                 if is_crossword(word,userinput):
-                    print(word)
+                    print(word,scrabblewordscore(word))
         elif ui == 3:
             try:
                 userinput = input("Enter letters for scrabble: ")
@@ -54,13 +54,14 @@ def looping():
                 return -1
             for word in dictionary:
                 if is_scrabble(word,userinput):
-                    print(word, scrabblewordscore(word))
+                    print(word)
         elif ui == 4:
             userinput = userInput("Enter length of palindrome you would like to enter: ")
             for word in dictionary:
                 if is_palindrome(word,userinput):
                     print(word)
         elif ui == 0:
+            print("Goodbye!")
             break
 
 def  userInput(prompt):
@@ -86,19 +87,21 @@ def is_palindrome(word,ui):
             return False
 
 def is_crossword(word, pattern):
-    if len(word) == len(pattern):
-        for i,letter in enumerate(pattern):
+    if len(word.lower()) == len(pattern.lower()):
+        for i,letter in enumerate(pattern.lower()):
             if not letter == "?":
                 if not letter == word[i]:
                    return False
-        return True
+            return True
 
 def is_scrabble(tiles,word):
-    for i,letter in enumerate(tiles):
-        if not letter == word[i]:
-            return True
-    return False
-
+    tl = list(tiles.lower())
+    for ch in word.lower():
+        if ch in tl:
+            tl.remove(ch)
+        else:
+            return False
+    return True
 
 def scrabblewordscore(word):
     val = 0
