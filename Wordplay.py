@@ -45,7 +45,7 @@ def looping():
                 return -1
             for word in dictionary:
                 if is_crossword(word,userinput):
-                    print(word,scrabblewordscore(word))
+                    print(word)
         elif ui == 3:
             try:
                 userinput = input("Enter letters for scrabble: ")
@@ -95,13 +95,13 @@ def is_crossword(word, pattern):
             return True
 
 def is_scrabble(tiles,word):
-    tl = list(tiles.lower())
-    for ch in word.lower():
-        if ch in tl:
-            tl.remove(ch)
+    tl = list(tiles.lower()) #makes the tiles a list)
+    for letter in word.lower(): #for each letter in the word
+        if letter in tl: #if the letter is in the tiles then continue
+            tl.remove(letter) #remove that letter
         else:
-            return False
-    return True
+            return False #if any part does not pass then the word wont be displayed
+    return True #if all parts passed then the word will be displayed
 
 def scrabblewordscore(word):
     val = 0
